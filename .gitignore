@@ -93,7 +93,7 @@ dist
 
 # Serverless directories
 .serverless/
-
+#
 # FuseBox cache
 .fusebox/
 
@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+*/build
+build/
+foront-end/build/
+

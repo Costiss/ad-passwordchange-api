@@ -10,17 +10,15 @@ router.post('/', async (req: Request, res: Response) => {
   if (oldPass && newPass && user) {
     const exiitcode = await execute(user, oldPass, newPass);
     if (exiitcode == 0) {
-      res.status(200).json({ msg: 'Senha trocada com sucesso' });
+      res.status(200).json({ msg: 'Password Changed successfully' });
     }
     if (exiitcode == 1) {
-      res
-        .status(500)
-        .json({ msg: 'Senha incorreta ou não respeita politica de senhas' });
+      res.status(500).json({
+        msg: 'Password/User incorrect'
+      });
     }
   } else {
-    res
-      .status(500)
-      .json({ msg: 'Não foram passados os parametros necessários' });
+    res.status(500).json({ msg: 'Empty parameters' });
   }
 });
 

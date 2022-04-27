@@ -4,14 +4,18 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import handleChange from './controller/handleChange';
 import rateLimit, { MemoryStore } from 'express-rate-limit';
-
-const port = 3000;
+import path from 'path';
+const port = 3001;
 const app = express();
 
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(helmet());
 app.use('/change', handleChange);
+app.use(
+  '/changepwd',
+  express.static(path.join(__dirname, '../front-end/build'))
+);
 app.use(
   rateLimit({
     windowMs: 10 * 60 * 1000, // 10 minutes
